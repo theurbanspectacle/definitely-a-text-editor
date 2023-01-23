@@ -18,12 +18,35 @@ module.exports = () => {
       path: path.resolve(__dirname, 'dist'),
     },
     plugins: [
-      
+      new InjectManifest({
+        swSrc: './src-sw.js',
+        swDest: './src-sw.js',
+      }),
+      new HtmlWebpackPlugin({
+        title: 'D.A.T.E - Definitely a text editor',
+        template: './index.html',
+      }),
+      new WebpackPwaManifest({
+        name: 'D.A.T.E. PWA',
+        short_name: 'DatePwd',
+        description: 'D.A.T.E. Progressive Web app',
+        background_color: '#ffffff',
+        crossorigin: 'use-credentials', //can be null, use-credentials or anonymous
+        icons: [
+          {
+            src: path.resolve('./src/images/logo.png'),
+            size: '500x500',
+          },
+        ]
+      })
     ],
 
     module: {
       rules: [
-        
+        {
+          test: /\.css$/i,
+          use: ["style-loader", "css-loader"],
+        },
       ],
     },
   };
