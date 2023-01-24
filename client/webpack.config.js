@@ -16,6 +16,8 @@ module.exports = () => {
     output: {
       filename: '[name].bundle.js',
       path: path.resolve(__dirname, 'dist'),
+      // The app won't load without this simple option. Webpack 5 issue: https://github.com/jantimon/html-webpack-plugin/issues/1588
+      publicPath: '',
     },
     plugins: [
       new InjectManifest({
@@ -28,10 +30,13 @@ module.exports = () => {
       }),
       new WebpackPwaManifest({
         name: 'D.A.T.E. PWA',
-        short_name: 'DatePwd',
-        description: 'D.A.T.E. Progressive Web app',
+        short_name: 'date',
+        description: 'D.A.T.E. Text editor',
         background_color: '#ffffff',
+        inject: true,
         crossorigin: 'use-credentials', //can be null, use-credentials or anonymous
+        fingerprints: false,
+        start_url: '/',
         icons: [
           {
             src: path.resolve('./src/images/logo.png'),

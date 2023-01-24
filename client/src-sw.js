@@ -31,7 +31,7 @@ registerRoute(({ request }) => request.mode === 'navigate', pageCache);
 // TODO: Implement asset caching
 registerRoute(({ request }) => {
   return request.destination === 'images'
-}, new StaleWhileRevalidate({
+}, new CacheFirst({
   cacheName: 'images'
 }));
 registerRoute(({ request }) => {

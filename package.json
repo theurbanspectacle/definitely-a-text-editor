@@ -1,11 +1,11 @@
 {
-  "name": "JATE",
+  "name": "date",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
   "scripts": {
     "start:dev": "concurrently \"npm run server\" \"npm run client\"",
-    "start": "node server/server.js ",
+    "start": "npm run build && npm run server",
     "server": "npm run server --prefix server",
     "build": "npm run build --prefix client",
     "install": "(cd client && npm install); (cd server && npm install)",

@@ -1,8 +1,8 @@
 {
-  "name": "JATE",
+  "name": "date-client",
   "scripts": {
     "dev": "webpack-dev-server",
-    "build": "webpack --mode production",
+    "build": "rm -rf dist && webpack --mode production",
     "start": "webpack --watch",
     "dev:no:reload": "webpack-dev-server --no-hot"
   },
